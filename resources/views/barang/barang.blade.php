@@ -103,7 +103,6 @@
                     </thead>
                     <tbody class="bg-white divide-y-2 divide-gray-200">
                         <!-- Data rows start -->
-                        @foreach($barang as $brg)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
                                 LP001
@@ -134,7 +133,36 @@
                                 </div>
                             </td>
                         </tr>
-                        @endforeach
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
+                                LP001
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
+                                Laptop
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
+                                Asus
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
+                                VivoBook X555BP-BX921T
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
+                                2.695.000
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
+                                2
+                            </td>
+                            <td class="pl-32 py-4 align-middle">
+                                <div class="flex flex-row">
+                                    <button class="px-8 py-1 text-white bg-purple-900 rounded-full">
+                                        Edit
+                                    </button>
+                                    <button class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
                         <!-- Data rows end -->
                     </tbody>
                 </table>
@@ -144,5 +172,3 @@
     </div>
     <!-- Tabel container -->
 </body>
-
-</html>
