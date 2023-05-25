@@ -18,4 +18,8 @@ Route::get('/', function () {
     return view('catalog');
 });
 
-Route::get('/barang', [BarangController::class, 'index']);
+Route::get('/barang/all', [BarangController::class, 'index']);
+
+Route::get('/barang/detail', function () {
+    return view('/barang/detailbarang');
+});
