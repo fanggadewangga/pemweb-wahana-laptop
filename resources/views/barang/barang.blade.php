@@ -51,7 +51,7 @@
                 <!-- Table top bar start -->
                 <div class="p-3 h-full w-full shadow-xl flex flex-row">
                     <div class="w-full flex justify-between p-4">
-                        <h2 class="font-bold text-l text-purple-dark ml-6">Barang</h2>
+                        <h2 class="font-bold text-l text-purple-900 ml-6">Barang</h2>
                     </div>
 
                     <!-- Search field start -->
@@ -75,7 +75,7 @@
                 <!-- Table top bar end -->
 
                 <!-- Table start -->
-                <table class="min-w-full divide-gray-200 bg-purple-1000">
+                <table class="min-w-full divide-gray-200 bg-purple-950">
                     <thead>
                         <tr>
                             <th class="pl-6 py-3 w-auto text-start text-base font-medium text-white tracking-wider align-middle">
@@ -103,24 +103,25 @@
                     </thead>
                     <tbody class="bg-white divide-y-2 divide-gray-200">
                         <!-- Data rows start -->
+                        @foreach($barang as $brg)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                LP001
+                                {{ $brg->id_barang }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                Laptop
+                                {{ $brg->jenis_barang }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                Asus
+                                {{ $brg->merk_barang }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                VivoBook X555BP-BX921T
+                                {{ $brg->tipe_barang }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                2.695.000
+                                {{ $brg->harga }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                2
+                                {{ $brg->stok }}
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
@@ -133,36 +134,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                LP001
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                Asus
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                VivoBook X555BP-BX921T
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                2.695.000
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                2
-                            </td>
-                            <td class="pl-32 py-4 align-middle">
-                                <div class="flex flex-row">
-                                    <button class="px-8 py-1 text-white bg-purple-900 rounded-full">
-                                        Edit
-                                    </button>
-                                    <button class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
-                                        Delete
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                        @endforeach
                         <!-- Data rows end -->
                     </tbody>
                 </table>
@@ -172,3 +144,5 @@
     </div>
     <!-- Tabel container -->
 </body>
+
+</html>
