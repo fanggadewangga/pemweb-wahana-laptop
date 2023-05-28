@@ -48,7 +48,7 @@
     <div class="w-full flex flex-col">
         <div class="w-full flex justify-end">
             <div class="w-3/4 flex flex-row">
-                <img src="{{ url('https://drive.google.com/uc?export=download&id=15Nq5Gh4II43jfvaErs6n7A_nGjXTqkYn') }}" class="w-3/4 mx-auto mt-12 rounded-2xl" />
+                <img src="{{ url($barang->foto_barang) }}" class="w-3/4 mx-auto mt-12 rounded-2xl" />
                 <button class="px-12 ml-32 h-10 text-white bg-purple-900 mt-12 rounded-full mr-48">
                     Edit
                 </button>

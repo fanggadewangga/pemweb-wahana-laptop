@@ -60,15 +60,18 @@
             <!-- Search bar start -->
             <div class="w-full flex items-center justify-center mt-16">
                 <div class="relative w-6/12 h-96">
-                    <div class="w-full flex flex-row rounded-full bg-gray-200">
-                        <input type="text" placeholder="MacBook Pro 8.1 Early 2011 Core i5 SSD 256Gb" class="w-full py-8 pl-12 pr-8 text-lg font-semibold rounded-full bg-gray-200 focus:outline-none" />
-                        <button class="w-96 px-16 my-2 mr-2 text-white bg-purple-900 rounded-full font-semibold">
-                            Search
-                        </button>
-                    </div>
+                    <form action="{{ url('/catalog/search') }}" method="GET">
+                        <div class="w-full flex flex-row rounded-full bg-gray-200">
+                            <input type="text" name="keyword" placeholder="MacBook Pro 8.1 Early 2011 Core i5 SSD 256Gb" class="w-full py-8 pl-12 pr-8 text-lg font-semibold rounded-full bg-gray-200 focus:outline-none" />
+                            <button type="submit" class="w-96 px-16 my-2 mr-2 text-white bg-purple-900 rounded-full font-semibold">
+                                Search
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- Search bar end -->
+
         </div>
     </div>
     <!-- Search field end -->
@@ -77,7 +80,7 @@
     <div class="flex flex-col items-center justify-center w-full h-64">
         <h1 class="text-5xl font-bold">Laptop bekas</h1>
         <div class="flex flex-row items-center">
-            <a href="barang.html" class="text-2xl font-bold mt-8 text-purple-900 hover:text-purple-600">See others <span class="font-extrabold">→</span></a>
+            <a href="{{ url('/barang/all') }}" class="text-2xl font-bold mt-8 text-purple-900 hover:text-purple-600">See others <span class="font-extrabold">→</span></a>
         </div>
     </div>
     <!-- Text end -->
@@ -87,26 +90,31 @@
 
         <!-- 1st row start -->
         <div class="flex flex-row items-center justify-center px-32">
-            @for ($i = 0; $i < 3; $i++) <!-- Product card 1 start -->
+            @php
+            $count = 0;
+            @endphp
+
+            @for($i = 0; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang === "Laptop")
+                <!-- Product card start -->
                 <div>
                     <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{url('/assets/laptop-card.png')}}" alt="product image" />
+                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
                         </a>
                         <div>
                             <a href="#">
                                 <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    ASUS VivoBook X555BP-BX921T AMD A9 Dual Graphics
+                                    {{ $brg->tipe_barang }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    Processor AMD A9-9420, Memory DDR4 4Gb, SSD 120Gb – HDD 500Gb, Graphics AMD
+                                    {{ $brg->spesifikasi }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp 2.695.000
+                                    Rp{{ $brg->harga_satuan }}
                                 </h5>
                             </a>
                         </div>
@@ -115,33 +123,45 @@
                         </button>
                     </div>
                 </div>
-                <!-- Product card 1 end -->
+                <!-- Product card end -->
+
+                @php
+                $count++;
+                @endphp
+                @endif
                 @endfor
+
         </div>
         <!-- 1st row end -->
 
         <!-- 2nd row start -->
         <div class="flex flex-row items-center justify-center px-32 mt-16">
-            @for ($i = 0; $i < 3; $i++) <!-- Product card 1 start -->
+            @php
+            $count = 0;
+            $startIndex = 8;
+            @endphp
+
+            @for($i = $startIndex; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang === "Laptop")
+                <!-- Product card start -->
                 <div>
                     <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{url('/assets/laptop-card.png')}}" alt="product image" />
+                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
                         </a>
                         <div>
                             <a href="#">
                                 <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    ASUS VivoBook X555BP-BX921T AMD A9 Dual Graphics
+                                    {{ $brg->tipe_barang }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    Processor AMD A9-9420, Memory DDR4 4Gb, SSD 120Gb – HDD 500Gb, Graphics AMD
+                                    {{ $brg->spesifikasi }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp 2.695.000
+                                    Rp{{ $brg->harga_satuan }}
                                 </h5>
                             </a>
                         </div>
@@ -150,8 +170,20 @@
                         </button>
                     </div>
                 </div>
-                <!-- Product card 1 end -->
+                <!-- Product card end -->
+
+                @php
+                $count++;
+                @endphp
+                @endif
+
+                @if($count === 3)
+                @php
+                $startIndex = $i + 1;
+                @endphp
+                @endif
                 @endfor
+
         </div>
         <!-- 2nd row end -->
     </div>
@@ -165,9 +197,11 @@
             <h1 class="w-8/12 font-bold text-6xl text-white">
                 Cari Sparepart Laptop Original Disini Aja
             </h1>
-            <button class="px-16 py-6 mt-8 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
-                Search
-            </button>
+            <a href="{{ url('/barang/all') }}">
+                <button class="px-16 py-6 mt-8 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
+                    Search
+                </button>
+            </a>
         </div>
     </div>
     <!-- Banner end -->
@@ -176,7 +210,7 @@
     <div class="flex flex-col items-center justify-center w-full h-64">
         <h1 class="text-5xl font-bold">Sparepart Original</h1>
         <div class="flex flex-row items-center">
-            <a href="barang.html" class="text-2xl font-bold mt-8 text-purple-900 hover:text-purple-600">See others <span class="font-extrabold">→</span></a>
+            <a href="{{ url('/barang/all') }}" class=" text-2xl font-bold mt-8 text-purple-900 hover:text-purple-600">See others <span class="font-extrabold">→</span></a>
         </div>
     </div>
     <!-- Text end -->
@@ -186,26 +220,31 @@
 
         <!-- 1st row start -->
         <div class="flex flex-row items-center justify-center px-32">
-            @for ($i = 0; $i < 3; $i++) <!-- Product card 1 start -->
+            @php
+            $count = 0;
+            @endphp
+
+            @for($i = 0; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang !== "Laptop")
+                <!-- Product card start -->
                 <div>
                     <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{url('/assets/laptop-card.png')}}" alt="product image" />
+                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
                         </a>
                         <div>
                             <a href="#">
                                 <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    ASUS VivoBook X555BP-BX921T AMD A9 Dual Graphics
+                                    {{ $brg->tipe_barang }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    Processor AMD A9-9420, Memory DDR4 4Gb, SSD 120Gb – HDD 500Gb, Graphics AMD
+                                    {{ $brg->spesifikasi }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp 2.695.000
+                                    Rp{{ $brg->harga_satuan }}
                                 </h5>
                             </a>
                         </div>
@@ -214,33 +253,44 @@
                         </button>
                     </div>
                 </div>
-                <!-- Product card 1 end -->
+                <!-- Product card end -->
+
+                @php
+                $count++;
+                @endphp
+                @endif
                 @endfor
         </div>
         <!-- 1st row end -->
 
         <!-- 2nd row start -->
         <div class="flex flex-row items-center justify-center px-32 mt-16">
-            @for ($i = 0; $i < 3; $i++) <!-- Product card 1 start -->
+            @php
+            $count = 0;
+            $startIndex = 8;
+            @endphp
+
+            @for($i = $startIndex; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang !== "Laptop")
+                <!-- Product card start -->
                 <div>
                     <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{url('/assets/laptop-card.png')}}" alt="product image" />
+                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
                         </a>
                         <div>
                             <a href="#">
                                 <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    ASUS VivoBook X555BP-BX921T AMD A9 Dual Graphics
+                                    {{ $brg->tipe_barang }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    Processor AMD A9-9420, Memory DDR4 4Gb, SSD 120Gb – HDD 500Gb, Graphics AMD
+                                    {{ $brg->spesifikasi }}
                                 </h5>
                             </a>
                             <a href="#">
                                 <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp 2.695.000
+                                    Rp{{ $brg->harga_satuan }}
                                 </h5>
                             </a>
                         </div>
@@ -249,7 +299,18 @@
                         </button>
                     </div>
                 </div>
-                <!-- Product card 1 end -->
+                <!-- Product card end -->
+
+                @php
+                $count++;
+                @endphp
+                @endif
+
+                @if($count === 3)
+                @php
+                $startIndex = $i + 1;
+                @endphp
+                @endif
                 @endfor
         </div>
         <!-- 2nd row end -->

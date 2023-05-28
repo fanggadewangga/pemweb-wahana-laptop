@@ -10,9 +10,9 @@ class Barang extends Model
 {
     use HasFactory;
     protected $table = 'barang';
+
     protected $fillable = ['id_barang', 'jenis_barang', 'merk_barang', 'tipe_barang', 'spesifikasi', 'tanggal_masuk_gudang', 'foto_barang', 'garansi', 'stok', 'harga_satuan', 'kelengkapan'];
 
-    protected $filltable = ['id_barang', 'jenis_barang', 'merk_barang', 'tipe_barang', 'spesifikasi', 'tanggal_masuk_gudang', 'foto_barang', 'garansi', 'stok', 'harga_satuan', 'kelengkapan'];
     // Method untuk mengambil data barang
     public function getBarang()
     {
@@ -41,9 +41,24 @@ class Barang extends Model
         return $result;
     }
 
+    // Method untuk mengambil satu data barang berdasarkan ID
     public function getBarangById($id_barang)
     {
         $result = DB::table($this->table)->where('id_barang', $id_barang)->first();
+        return $result;
+    }
+
+    // Method untuk menghapus data barang
+    public function deleteBarang($id_barang)
+    {
+        $result = DB::table($this->table)->where('id_barang', $id_barang)->delete();
+        return $result;
+    }
+
+    // Method untuk mencari barang berdasarkan nama
+    public function searchBarang($keyword)
+    {
+        $result = DB::table($this->table)->where('jenis_barang', 'LIKE', "%$keyword%")->orWhere('merk_barang', 'LIKE', "%$keyword%")->orWhere('tipe_barang', 'LIKE', "%$keyword%")->get();
         return $result;
     }
 }

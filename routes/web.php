@@ -18,10 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/catalog', function () {
-    return view('catalog');
-});
+Route::get('/catalog', [BarangController::class, 'catalog']);
+
+Route::get('/catalog/search', [BarangController::class, 'searchBarang']);
 
 Route::get('/barang/all', [BarangController::class, 'index']);
 
 Route::get('/barang/detail/{id_barang}', [BarangController::class, 'getDetail']);
+
+Route::get('/barang/search', [BarangController::class, 'searchBarang']);
+
+Route::delete('/barang/delete/{id_barang}', [BarangController::class, 'deleteBarang']);
