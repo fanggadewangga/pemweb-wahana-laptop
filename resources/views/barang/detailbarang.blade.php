@@ -48,7 +48,7 @@
     <div class="w-full flex flex-col">
         <div class="w-full flex justify-end">
             <div class="w-3/4 flex flex-row">
-                <img src="{{ url('/assets/laptop.png') }}" class="w-3/4 mx-auto mt-12 rounded-2xl" />
+                <img src="{{ url('https://drive.google.com/uc?export=download&id=15Nq5Gh4II43jfvaErs6n7A_nGjXTqkYn') }}" class="w-3/4 mx-auto mt-12 rounded-2xl" />
                 <button class="px-12 ml-32 h-10 text-white bg-purple-900 mt-12 rounded-full mr-48">
                     Edit
                 </button>
@@ -90,149 +90,31 @@
         <div class="h-full w-1/2 flex flex-row my-16 mx-auto justify-center items-center">
 
             <!-- Product specs start -->
-            <div class="h-full w-6/12 py-8 px-10 flex flex-col drop-shadow-2xl rounded-3xl mx-8 bg-gray-100">
+            <div class="h-96 w-6/12 py-8 px-10 flex flex-col drop-shadow-2xl rounded-3xl mx-8 bg-gray-100">
                 <div class="px-4">
                     <h1 class="text-2xl text-white bg-purple-950 items-center px-20 py-3 rounded-full">
                         Spesifikasi
                     </h1>
                 </div>
                 <div class="text-xl py-4 font-medium text-gray-600 mt-4">
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            •
-                        </p>
-                        <p class="items-start justify-start ml-1">
-                            Processor AMD A9-9420
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            •
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Memory DDR4 4Gb
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            •
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            SSD 120Gb – HDD 500Gb
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            •
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Graphics AMD Radeon R5 and Radeon M420 2Gb
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            •
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            15.6inch LED FHD 1080
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            •
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Baterai Normal
-                        </p>
-                    </div>
+                    <p class="items-start justify-start mt-1 ml-1">
+                        {{ $barang->spesifikasi }}
+                    </p>
                 </div>
             </div>
             <!-- Product specs end -->
 
             <!-- Product completenes start -->
-            <div class="h-full w-6/12 pt-8 px-10 flex flex-col drop-shadow-2xl rounded-3xl mx-8 bg-gray-100">
+            <div class="h-96 w-6/12 py-8 px-10 flex flex-col drop-shadow-2xl rounded-3xl mx-8 bg-gray-100">
                 <div class="px-4">
                     <h1 class="text-2xl text-white bg-purple-950 items-center px-20 py-3 rounded-full">
                         Kelengkapan
                     </h1>
                 </div>
                 <div class="text-xl font-medium text-gray-600 my-4">
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            1.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Laptop ASUS VivoBook X555BP-BX921T
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            2.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Baterai laptop
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            3.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Adaptor daya
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            4.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Kabel pengisi daya
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            5.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Panduan pengguna
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            6.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Kartu garansi
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            7.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Kartu dukungan teknis
-                        </p>
-                    </div>
-
-                    <div class="flex flex-row">
-                        <p class="items-start justify-start mt-1">
-                            8.
-                        </p>
-                        <p class="items-start justify-start mt-1 ml-1">
-                            Tas laptop
-                        </p>
-                    </div>
+                    <p class="items-start justify-start mt-1 ml-1">
+                        {{ $barang->kelengkapan }}
+                    </p>
                 </div>
             </div>
             <!-- Product completenes end -->
