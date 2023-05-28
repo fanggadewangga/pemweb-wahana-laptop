@@ -96,35 +96,26 @@
 
             @for($i = 0; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang === "Laptop")
                 <!-- Product card start -->
-                <div>
-                    <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
-                        </a>
-                        <div>
-                            <a href="#">
-                                <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    {{ $brg->tipe_barang }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    {{ $brg->spesifikasi }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp{{ $brg->harga_satuan }}
-                                </h5>
-                            </a>
+                <div class="justify-center">
+                    <div class="h-full mx-8 flex flex-col  items-center rounded-lg dark:border-gray-700">
+                        <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
+                        <div class="overflow-hidden">
+                            <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
+                                {{ $brg->tipe_barang }}
+                            </h5>
+                            <h5 class="w-96 text-xl mb-6 font-normal tracking-tight text-center line-clamp-2 text-black">
+                                {{ $brg->spesifikasi }}
+                            </h5>
+                            <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
+                                Rp{{ $brg->harga_satuan }}
+                            </h5>
                         </div>
-                        <button class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
+                        <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
                             See Detail
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Product card end -->
-
                 @php
                 $count++;
                 @endphp
@@ -143,31 +134,23 @@
 
             @for($i = $startIndex; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang === "Laptop")
                 <!-- Product card start -->
-                <div>
-                    <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
-                        </a>
-                        <div>
-                            <a href="#">
-                                <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    {{ $brg->tipe_barang }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    {{ $brg->spesifikasi }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp{{ $brg->harga_satuan }}
-                                </h5>
-                            </a>
+                <div class="justify-center">
+                    <div class="h-full mx-8 flex flex-col  items-center rounded-lg dark:border-gray-700">
+                        <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
+                        <div class="overflow-hidden">
+                            <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
+                                {{ $brg->tipe_barang }}
+                            </h5>
+                            <h5 class="w-96 text-xl mb-6 font-normal tracking-tight text-center line-clamp-2 text-black">
+                                {{ $brg->spesifikasi }}
+                            </h5>
+                            <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
+                                Rp{{ $brg->harga_satuan }}
+                            </h5>
                         </div>
-                        <button class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
+                        <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
                             See Detail
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Product card end -->
@@ -226,31 +209,23 @@
 
             @for($i = 0; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang !== "Laptop")
                 <!-- Product card start -->
-                <div>
-                    <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
-                        </a>
-                        <div>
-                            <a href="#">
-                                <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    {{ $brg->tipe_barang }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    {{ $brg->spesifikasi }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp{{ $brg->harga_satuan }}
-                                </h5>
-                            </a>
+                <div class="justify-center">
+                    <div class="h-full mx-8 flex flex-col  items-center rounded-lg dark:border-gray-700">
+                        <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
+                        <div class="overflow-hidden">
+                            <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
+                                {{ $brg->tipe_barang }}
+                            </h5>
+                            <h5 class="w-96 text-xl mb-6 font-normal tracking-tight text-center line-clamp-2 text-black">
+                                {{ $brg->spesifikasi }}
+                            </h5>
+                            <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
+                                Rp{{ $brg->harga_satuan }}
+                            </h5>
                         </div>
-                        <button class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
+                        <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
                             See Detail
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Product card end -->
@@ -272,31 +247,23 @@
 
             @for($i = $startIndex; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang !== "Laptop")
                 <!-- Product card start -->
-                <div>
-                    <div class="h-full flex flex-col items-center rounded-lg dark:border-gray-700">
-                        <a href="#">
-                            <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
-                        </a>
-                        <div>
-                            <a href="#">
-                                <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
-                                    {{ $brg->tipe_barang }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="mx-8 text-xl mb-6 font-normal tracking-tight text-center overflow-ellipsis text-black">
-                                    {{ $brg->spesifikasi }}
-                                </h5>
-                            </a>
-                            <a href="#">
-                                <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                    Rp{{ $brg->harga_satuan }}
-                                </h5>
-                            </a>
+                <div class="justify-center">
+                    <div class="h-full mx-8 flex flex-col  items-center rounded-lg dark:border-gray-700">
+                        <img class="rounded-lg w-96 h-60" src="{{ url($brg->foto_barang) }}" alt="product image" />
+                        <div class="overflow-hidden">
+                            <h5 class="mx-6 px-8 my-4 text-2xl font-bold tracking-tight text-center text-black">
+                                {{ $brg->tipe_barang }}
+                            </h5>
+                            <h5 class="w-96 text-xl mb-6 font-normal tracking-tight text-center line-clamp-2 text-black">
+                                {{ $brg->spesifikasi }}
+                            </h5>
+                            <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
+                                Rp{{ $brg->harga_satuan }}
+                            </h5>
                         </div>
-                        <button class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
+                        <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
                             See Detail
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- Product card end -->
