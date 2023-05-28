@@ -62,3 +62,4 @@ class Barang extends Model
         return $result;
     }
 }
+
