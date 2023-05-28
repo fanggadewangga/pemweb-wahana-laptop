@@ -24,6 +24,4 @@ Route::get('/catalog', function () {
 
 Route::get('/barang/all', [BarangController::class, 'index']);
 
-Route::get('/barang/detail', function () {
-    return view('/barang/detailbarang');
-});
+Route::get('/barang/detail/{id_barang}', [BarangController::class, 'getDetail']);

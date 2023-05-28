@@ -59,7 +59,7 @@
         <!-- Product name start -->
         <div class="w-7/12 flex mx-auto">
             <h1 class="ml-16 px-4 mt-8 items-center text-5xl font-bold">
-                ASUS VivoBook X555BP-BX921T AMD A9 Dual Graphics
+                {{ $barang->tipe_barang }}
             </h1>
         </div>
         <!-- Product name end -->
@@ -70,7 +70,7 @@
                 Harga
             </h1>
             <button class="px-6 py-1 mt-8 rounded-3xl bg-purple-900 text-white text-xl font-bold">
-                Rp 2.695.000
+                Rp{{ $barang->harga_satuan }}
             </button>
         </div>
         <!-- Product price end -->
@@ -81,7 +81,7 @@
                 Stok
             </h1>
             <button class="px-6 py-1 mt-8 rounded-3xl bg-purple-900 text-white text-xl font-bold">
-                Rp 2.695.000
+                {{ $barang->stok }}
             </button>
         </div>
         <!-- Product stock end -->

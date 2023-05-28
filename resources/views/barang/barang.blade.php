@@ -24,10 +24,10 @@
                     <a href="#" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
                 </li>
                 <li>
-                    <a href="catalog.html" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Catalog</a>
+                    <a href="{{ url('/catalog') }}" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Catalog</a>
                 </li>
                 <li>
-                    <a href="barang.html" class="font-bold text-purple-900 text-base hover:text-purple-900 hover:font-bold">Barang</a>
+                    <a href="{{ url('/barang/all') }}" class="font-bold text-purple-900 text-base hover:text-purple-900 hover:font-bold">Barang</a>
                 </li>
             </ul>
         </div>
@@ -118,19 +118,23 @@
                                 {{ $brg->tipe_barang }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                {{ $brg->harga }}
+                                {{ $brg->harga_satuan }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
                                 {{ $brg->stok }}
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
-                                    <button class="px-8 py-1 text-white bg-purple-900 rounded-full">
+                                    <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-8 py-1 text-white bg-purple-900 rounded-full">
                                         Edit
-                                    </button>
-                                    <button class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
-                                        Delete
-                                    </button>
+                                    </a>
+                                    <form action="{{ url('/barang/delete', $brg->id_barang) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

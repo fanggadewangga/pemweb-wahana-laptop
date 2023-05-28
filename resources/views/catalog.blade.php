@@ -26,10 +26,10 @@
                     <a href="#" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
                 </li>
                 <li>
-                    <a href="catalog.html" class="font-bold text-purple-900 text-base hover:text-purple-900 hover:font-bold">Catalog</a>
+                    <a href="{{ url('/catalog') }}" class="font-bold text-purple-900 text-base hover:text-purple-900 hover:font-bold">Catalog</a>
                 </li>
                 <li>
-                    <a href="barang.html" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Barang</a>
+                    <a href="{{ url('/barang/all') }}" class="font-semibold  text-gray-400 text-base hover:text-purple-900 hover:font-bold">Barang</a>
                 </li>
             </ul>
         </div>
