@@ -40,4 +40,18 @@ class Barang extends Model
         $result = DB::table($this->table)->insert($data);
         return $result;
     }
+
+    // Method untuk mengambil satu data barang berdasarkan ID
+    public function getBarangById($id_barang)
+    {
+        $result = DB::table($this->table)->where('id_barang', $id_barang)->first();
+        return $result;
+    }
+
+    // Method untuk menghapus data barang
+    public function deleteBarang($id_barang)
+    {
+        $result = DB::table($this->table)->where('id_barang', $id_barang)->delete();
+        return $result;
+    }
 }
