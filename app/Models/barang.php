@@ -54,4 +54,11 @@ class Barang extends Model
         $result = DB::table($this->table)->where('id_barang', $id_barang)->delete();
         return $result;
     }
+
+    // Method untuk mencari barang berdasarkan nama
+    public function searchBarang($keyword)
+    {
+        $result = DB::table($this->table)->where('jenis_barang', 'LIKE', "%$keyword%")->orWhere('merk_barang', 'LIKE', "%$keyword%")->orWhere('tipe_barang', 'LIKE', "%$keyword%")->get();
+        return $result;
+    }
 }
