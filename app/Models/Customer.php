@@ -27,6 +27,4 @@ class Customer extends Model
         $result = DB::table($this->table)->where('nama_customer', 'LIKE', "%$keyword%")->get();
         return $result;
     }
-
-
 }
