@@ -56,26 +56,25 @@
                         <h2 class="font-bold text-l text-purple-900 ml-6">Barang</h2>
                     </div>
 
-                    <!-- Search field start -->
-                    <div class="flex items-center justify-center">
-                        <div class="relative">
-                            <form action="/barang/search" method="GET"> <!-- Formulir pencarian dengan metode GET -->
-                                <input type="text" name="keyword" placeholder="Search..." class="w-96 py-1.5 pl-10 pr-8 rounded-full bg-gray-200 focus:outline-none" />
-                                <button type="submit" class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" width="25" height="25" viewBox="0 0 25 24" fill="none">
-                                    <ellipse cx="12.8976" cy="10.885" rx="9.10146" ry="8.88476" stroke="#ADB5BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M19.2278 17.5258L22.7961 21.0001" stroke="#ADB5BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </button>
-                            </form>
+                    <div class="flex flex-row items-center">
+                        <!-- Search field start -->
+                        <div class="flex items-center justify-center">
+                            <div class="items-center">
+                                <form action="/barang/search" method="GET"> <!-- Formulir pencarian dengan metode GET -->
+                                    <input type="text" name="keyword" placeholder="Search..." class="w-96 py-1.5 pl-10 pr-8 rounded-full bg-gray-200 focus:outline-none" />
+                                </form>
+                            </div>
                         </div>
+                        <!-- Search field end -->
+
+
+                        <!-- Button add start -->
+                        <button id="openPopup" class="h-8 ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
+                            Add
+                        </button>
+                        <!-- Button add end -->
                     </div>
-                    <!-- Search field end -->
 
-
-                    <!-- Button add start -->
-                    <button id = "openPopup" class="ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
-                        Add
-                    </button>
-                    <!-- Button add end -->
                 </div>
                 <!-- Table top bar end -->
 
@@ -130,7 +129,7 @@
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
-                                    <a id = "" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
+                                    <a id="" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
                                         Edit
                                     </a>
                                     <form action="{{ url('/barang/delete', $brg->id_barang) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
@@ -157,4 +156,5 @@
     <!-- Tabel container -->
 </body>
 <script src="{{asset('js/popupForm.js')}}"></script>
+
 </html>
