@@ -66,14 +66,23 @@
                             </div>
                         </div>
                         <!-- Search field end -->
+                    <div class="flex flex-row items-center">
+                        <!-- Search field start -->
+                        <div class="flex items-center justify-center">
+                            <div class="items-center">
+                                <form action="/barang/search" method="GET"> <!-- Formulir pencarian dengan metode GET -->
+                                    <input type="text" name="keyword" placeholder="Search..." class="w-96 py-1.5 pl-10 pr-8 rounded-full bg-gray-200 focus:outline-none" />
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Search field end -->
 
-                        <!-- Button add start -->
-                        <button id="openPopup" onclick="showPopupForm()" class="h-8 ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
-                            Add
-                        </button>
-                        <!-- Button add end -->
-                    </div>
 
+                    <!-- Button add start -->
+                    <button id = "openPopup" class="ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
+                        Add
+                    </button>
+                    <!-- Button add end -->
                 </div>
                 <!-- Table top bar end -->
 
@@ -128,10 +137,7 @@
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
-                                    <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-6 py-1 mr-4 text-white bg-green-500 rounded-full">
-                                        Show
-                                    </a>
-                                    <button data-id="{{ $brg->id_barang }}" id="open-popup-edit-{{ $brg->id_barang }}" class="px-8 py-1 text-white bg-purple-900 rounded-full">
+                                    <a id = "" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
                                         Edit
                                     </button>
                                     <form action="{{ url('/barang/delete', $brg->id_barang) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
