@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 
-
 class BarangController extends Controller
 {
     public $model;
@@ -103,8 +102,40 @@ class BarangController extends Controller
     }
 
 
-    public function updateBarang($id_barang)
+    public function updateBarang(Request $request)
     {
-        
+        $id_barang = $request->input('id_barang');
+        $jenis_barang = $request->input('jenis_barang');
+        $merk_barang = $request->input('merk_barang');
+        $tipe_barang = $request->input('tipe_barang');
+        $spesifikasi = $request->input('spesifikasi');
+        $tanggal_masuk_gudang = $request->input('tanggal_masuk_gudang');
+        $foto_barang = $request->input('foto_barang');
+        $garansi = $request->input('garansi');
+        $stok = $request->input('stok');
+        $harga_satuan = $request->input('harga_satuan');
+        $kelengkapan = $request->input('kelengkapan');
+
+        $data = [
+            'jenis_barang' => $jenis_barang,
+            'merk_barang' => $merk_barang,
+            'tipe_barang' => $tipe_barang,
+            'spesifikasi' => $spesifikasi,
+            'tanggal_masuk_gudang' => $tanggal_masuk_gudang,
+            'foto_barang' => $foto_barang,
+            'garansi' => $garansi,
+            'stok' => $stok,
+            'harga_satuan' => $harga_satuan,
+            'kelengkapan' => $kelengkapan
+        ];
+
+        // Sesuaikan dengan nama model yang Anda gunakan
+        $result = $this->model->updateBarang($id_barang, $data);
+
+        if ($result) {
+            return redirect('/barang/all')->with('success', 'Barang berhasil diperbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui barang.');
+        }
     }
 }
