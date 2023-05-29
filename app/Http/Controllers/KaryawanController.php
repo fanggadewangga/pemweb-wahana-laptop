@@ -40,7 +40,7 @@ class KaryawanController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            print("BVerhasil");
+            print("Berhasil");
             // Authentikasi berhasil, redirect ke halaman /catalog
 
         } else {
