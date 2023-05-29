@@ -50,14 +50,14 @@
                 <!-- Table top bar start -->
                 <div class="p-3 h-full w-full shadow-xl flex flex-row">
                     <div class="w-full flex justify-between p-4">
-                        <h2 class="font-bold text-l text-purple-900 ml-6">Karyawan</h2>
+                        <h2 class="font-bold text-l text-purple-900 ml-6">Nota</h2>
                     </div>
 
                     <div class="flex flex-row items-center">
                         <!-- Search field start -->
                         <div class="flex items-center justify-center">
                             <div class="items-center">
-                                <form action="/karyawan/search" method="GET"> <!-- Formulir pencarian dengan metode GET -->
+                                <form action="/nota/search" method="GET"> <!-- Formulir pencarian dengan metode GET -->
                                     <input type="text" name="keyword" placeholder="Search..." class="w-96 py-1.5 pl-10 pr-8 rounded-full bg-gray-200 focus:outline-none" />
                                 </form>
                             </div>
@@ -80,13 +80,16 @@
                     <thead>
                         <tr>
                             <th class="px-8 py- w-auto text-start text-base font-medium text-white tracking-wider align-middle">
-                                ID
+                                ID Nota
                             </th>
                             <th class="px-12 py-3 w-auto text-start text-base font-medium text-white tracking-wider align-middle">
-                                Nama
+                                Nama Customer
                             </th>
                             <th class="px-12 py-3 w-auto text-start text-base font-medium text-white tracking-wider align-middle">
-                                Email
+                                Nama Karyawan
+                            </th>
+                            <th class="px-12 py-3 w-auto text-start text-base font-medium text-white tracking-wider align-middle">
+                                Tanggal Transaksi
                             </th>
                             <th class="pl-48 py-3 w-auto text-start text-base font-medium text-white tracking-wider align-middle">
                                 Action
@@ -95,21 +98,24 @@
                     </thead>
                     <tbody class="bg-white divide-y-2 divide-gray-200">
                         <!-- Data rows start -->
-                        @foreach($karyawan as $karyawan)
+                        @foreach($nota as $nota)
                         <tr>
                             <td class="px-8 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                {{ $karyawan->id_karyawan }}
+                                {{ $nota->id_nota }}
                             </td>
                             <td class="px-12 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                {{ $karyawan->nama_karyawan }}
+                                {{ $nota->nama_customer }}
                             </td>
                             <td class="px-12 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                {{ $karyawan->email }}
+                                {{ $nota->nama_karyawan }}
+                            </td>
+                            <td class="px-12 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
+                                {{ $nota->tanggal_transaksi }}
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
-                                    <a id="" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
-                                        Edit
+                                    <a id="" href="" class="px-8 py-1 text-white bg-green-600 rounded-full">
+                                        Show
                                     </a>
                                     <form action="" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
                                         @csrf

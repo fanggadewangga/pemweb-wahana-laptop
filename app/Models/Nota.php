@@ -14,19 +14,12 @@ class Nota extends Model
 
     protected $fillable = ['id_nota', 'id_customer', 'id_karyawan', 'tanggal_transaksi'];
 
-    // Method untuk mengambil semua data customer
-    public static function getNota()
+    public static function getAllNota()
     {
-    return DB::table('nota')
-        ->join('customer', 'nota.id_customer', '=', 'customer.id_customer')
-        ->join('karyawan', 'nota.id_karyawan', '=', 'karyawan.id_karyawan')
-        ->select('nota.*', 'customer.id_customer as id_customer', 'karyawan.id_karyawan as id_karyawan','nota.tanggal_transaksi as tanggal_transaksi')
-        ->get();
+        return DB::table('nota')
+            ->join('customer', 'nota.id_customer', '=', 'customer.id_customer')
+            ->join('karyawan', 'nota.id_karyawan', '=', 'karyawan.id_karyawan')
+            ->select('nota.*', 'customer.nama_customer as nama_customer', 'karyawan.nama_karyawan as nama_karyawan',)
+            ->get();
     }
-
-
-
-    
-
 }
-

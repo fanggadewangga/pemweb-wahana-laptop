@@ -20,27 +20,29 @@
         <!-- Store name end -->
 
         <!-- Navbar start -->
-        <div class="w-1/5 flex items-center">
+        <div class="w-2/12 flex items-center">
             <ul class="w-full flex flex-row justify-between">
                 <li>
-                    <a href="#" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
                 </li>
                 <li>
                     <a href="{{ url('/catalog') }}" class="font-bold text-purple-900 text-base hover:text-purple-900 hover:font-bold">Catalog</a>
-                </li>
-                <li>
-                    <a href="{{ url('/barang/all') }}" class="font-semibold  text-gray-400 text-base hover:text-purple-900 hover:font-bold">Barang</a>
                 </li>
             </ul>
         </div>
         <!-- Navbar end -->
         <div class="w-1/7 flex items-center px-4 py-3 justify-between">
-            <img class="w-12 h-12 mr-4 rounded-full" src="{{url('/assets/user.png')}}" alt="Back" />
-            <div class="flex flex-col">
-                <button>
-                    <h3 class="font-normal mb-0.15 text-lg">Evan Laksana</h3>
+            <img class="w-12 h-12 mr-4 rounded-full" src="{{url('/assets/user.png')}}" alt="User" />
+            <div class="flex flex-row">
+                <div class="flex flex-col">
+                    <button>
+                        <h3 class="font-normal mb-0.15 text-lg">Evan Laksana</h3>
+                    </button>
+                    <h4 class="text-gray-500 font-normal text-sm">Owner</h4>
+                </div>
+                <button type="button" class="flex items-center ml-4">
+                    <img src="{{url('/assets/logout.png')}}" alt="Logout" class="w-8 h-8">
                 </button>
-                <h4 class="text-gray-500 font-normal text-sm">Owner</h4>
             </div>
         </div>
     </div>
@@ -107,7 +109,7 @@
                                 {{ $brg->spesifikasi }}
                             </h5>
                             <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                Rp{{ $brg->harga_satuan }}
+                                Rp {{ number_format($brg->harga_satuan, 0, ',', '.') }}
                             </h5>
                         </div>
                         <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
@@ -145,7 +147,7 @@
                                 {{ $brg->spesifikasi }}
                             </h5>
                             <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                Rp{{ $brg->harga_satuan }}
+                                Rp {{ number_format($brg->harga_satuan, 0, ',', '.') }}
                             </h5>
                         </div>
                         <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
@@ -220,7 +222,7 @@
                                 {{ $brg->spesifikasi }}
                             </h5>
                             <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                Rp{{ $brg->harga_satuan }}
+                                Rp {{ number_format($brg->harga_satuan, 0, ',', '.') }}
                             </h5>
                         </div>
                         <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
@@ -258,7 +260,7 @@
                                 {{ $brg->spesifikasi }}
                             </h5>
                             <h5 class="text-2xl mb-8 font-bold tracking-tight text-center text-black">
-                                Rp{{ $brg->harga_satuan }}
+                                Rp {{ number_format($brg->harga_satuan, 0, ',', '.') }}
                             </h5>
                         </div>
                         <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-12 py-3 bg-purple-800 items-center text-xl text-white rounded-full font-semibold">
