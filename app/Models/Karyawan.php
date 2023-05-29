@@ -57,6 +57,7 @@ class Karyawan extends Authenticatable
         }
     }
 
+    // Method untuk mencari karyawan berdasarkan nama
     public function searchKaryawan($keyword)
     {
         $result = DB::table($this->table)->where('nama_karyawan', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%")->get();

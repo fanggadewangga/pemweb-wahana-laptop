@@ -18,16 +18,13 @@
         <!-- Store name end -->
 
         <!-- Navbar start -->
-        <div class="w-1/5 flex items-center">
+        <div class="w-2/12 flex items-center">
             <ul class="w-full flex flex-row justify-between">
                 <li>
-                    <a href="#" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
                 </li>
                 <li>
                     <a href="{{ url('/catalog') }}" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Catalog</a>
-                </li>
-                <li>
-                    <a href="{{ url('/barang/all') }}" class="font-bold text-purple-900 text-base hover:text-purple-900 hover:font-bold">Barang</a>
                 </li>
             </ul>
         </div>
@@ -121,6 +118,111 @@
         </div>
         <!-- Product specs container end-->
 
+        <!-- Product detail information start -->
+        <div class="w-full flex items-center justify-center">
+
+            <!-- Box start -->
+            <div class="w-1/2 drop-shadow-2xl py-8 justify-center items-center rounded-3xl bg-gray-100">
+
+                <!-- Text start -->
+                <div class="w-1/3 px-4 py-4 bg-purple-950 rounded-full flex mx-auto items-center">
+                    <h1 class="w-full text-2xl font-bold text-white text-center">
+                        Informasi Detail
+                    </h1>
+                </div>
+                <!-- Text end -->
+
+                <!-- Jenis and Id start -->
+                <div class="w-full flex mt-8 flex-row justify-between">
+
+                    <div class="w-1/2 ml-10 flex flex-col">
+                        <p class="text-xl mb-2 font-medium">
+                            Jenis
+                        </p>
+                        <div class="w-11/12 bg-purple-800 rounded-full">
+                            <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
+                                Laptop
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="w-1/2 flex flex-col">
+                        <p class="text-xl mb-2 font-medium">
+                            ID
+                        </p>
+                        <div class="w-11/12 bg-purple-800 rounded-full">
+                            <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
+                                Laptop
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Jenis and Id end -->
+
+                <!-- Merk and garansi start -->
+                <div class="w-full flex mt-8 flex-row justify-between">
+
+                    <div class="w-1/2 ml-10 flex flex-col">
+                        <p class="text-xl mb-2 font-medium">
+                            Merk
+                        </p>
+                        <div class="w-11/12 bg-purple-800 rounded-full">
+                            <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
+                                Laptop
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="w-1/2 flex flex-col">
+                        <p class="text-xl mb-2 font-medium">
+                            Garansi
+                        </p>
+                        <div class="w-11/12 bg-purple-800 rounded-full">
+                            <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
+                                Laptop
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Merk and garansi end -->
+
+                <!-- Tipe and tanggal start -->
+                <div class="w-full flex mt-8 flex-row justify-between">
+                    <div class="w-1/2 ml-10 flex flex-col">
+                        <p class="text-xl mb-2 font-medium">
+                            Tipe
+                        </p>
+                        <div class="w-11/12 bg-purple-800 rounded-full">
+                            <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
+                                Laptop
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="w-1/2 flex flex-col">
+                        <p class="text-xl mb-2 font-medium">
+                            Tanggal masuk
+                        </p>
+                        <div class="w-11/12 bg-purple-800 rounded-full">
+                            <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
+                                Laptop
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Tipe and tanggal end -->
+
+
+            </div>
+            <!-- Box start -->
+
+
+        </div>
+
+        <!-- Product detail information end -->
     </div>
     <!-- Product detail end -->
 
