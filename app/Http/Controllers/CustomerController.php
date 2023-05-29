@@ -16,7 +16,19 @@ class CustomerController extends Controller
 
     public function getAllCustomer()
     {
-        return $this->model->getCustomer();
+        $result = $this->model->getAllCustomer();
+        return view('customer.customer', ['customer' => $result]);
     }
 
+    public function searchCustomer(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Panggil method pencarian pada model Barang
+        $result = $this->model->searchCustomer($keyword);
+
+
+        // Kembalikan hasil pencarian ke view yang sesuai
+        return view('customer.customer', ['customer' => $result]);
+    }
 }

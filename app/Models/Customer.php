@@ -15,14 +15,14 @@ class Customer extends Model
     protected $fillable = ['id_customer', 'nomor_telepon', 'nama_customer'];
 
     // Method untuk mengambil data customer
-    public function getCustomer()
+    public function getAllCustomer()
     {
         $result = DB::table($this->table)->get();
         return $result;
     }
 
     // Method untuk mencari customer berdasarkan nama
-    public function searchBarang($keyword)
+    public function searchCustomer($keyword)
     {
         $result = DB::table($this->table)->where('nama_customer', 'LIKE', "%$keyword%")->get();
         return $result;

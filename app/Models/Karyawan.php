@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Karyawan extends Model
+class Karyawan extends Authenticatable
 {
     use HasFactory;
     protected $table = 'karyawan';
 
     protected $fillable = ['id_karyawan', 'nama_karyawan', 'email', 'password'];
-    
+
     // Method untuk mengambil data karyawan
     public function getKaryawan()
     {
@@ -55,6 +56,10 @@ class Karyawan extends Model
             return false;
         }
     }
+
+    public function searchKaryawan($keyword)
+    {
+        $result = DB::table($this->table)->where('nama_karyawan', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%")->get();
+        return $result;
+    }
 }
-
-

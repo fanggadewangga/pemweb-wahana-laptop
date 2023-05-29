@@ -36,13 +36,18 @@
             <!-- Login text end -->
 
 
-            <div class="w-full mx-auto mt-6">
+            <!-- Form login start -->
+            <form action="{{ url('/login') }}" method="POST" class="w-full mx-auto mt-6">
+                @csrf
                 <!-- Email fields start -->
                 <div class="w-full px-20 flex flex-col justify-center">
                     <h3 class="text-base font-medium text-gray-400 mb-2">
                         Email
                     </h3>
-                    <input type="text" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter text">
+                    <input type="text" name="email" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter email">
+                    @error('email')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <!-- Email fields end -->
 
@@ -51,27 +56,32 @@
                     <h3 class="text-base font-medium text-gray-400 mb-2">
                         Password
                     </h3>
-                    <input type="text" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter text">
+                    <input type="password" name="password" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter password">
+                    @error('password')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
                 <!-- Password fields end -->
 
                 <!-- Button login start -->
                 <div class="w-full flex mt-4 justify-center">
-                    <a href="{{ url('/barang/detail') }}" class="px-16 py-1.5 bg-purple-900 te-c items-center text-xl text-white rounded-full font-semibold">
+                    <button type="submit" class="px-16 py-1.5 bg-purple-900 te-c items-center text-xl text-white rounded-full font-semibold">
                         Login
-                    </a>
+                    </button>
                 </div>
                 <!-- Button login end -->
+            </form>
+            <!-- Form login end -->
 
-                <!-- Text start -->
-                <div class="w-full flex mt-4 justify-center">
-                    <p>
-                        Don’t have an account?
-                        <a href="{{ url('/register') }}" class="text-purple-700">Click here to sign up</a>
-                    </p>
-                </div>
-                <!-- Text end -->
+
+            <!-- Text start -->
+            <div class="w-full flex mt-4 justify-center">
+                <p>
+                    Don’t have an account?
+                    <a href="{{ url('/register') }}" class="text-purple-700">Click here to sign up</a>
+                </p>
             </div>
+            <!-- Text end -->
         </div>
         <!-- Login section end -->
 
