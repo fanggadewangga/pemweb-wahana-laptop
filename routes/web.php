@@ -31,3 +31,5 @@ Route::get('/barang/search', [BarangController::class, 'searchBarang']);
 Route::delete('/barang/delete/{id_barang}', [BarangController::class, 'deleteBarang']);
 
 Route::post('/barang/add', [BarangController::class, 'addBarang']);
+
+Route::get('/get-data/{id}', [BarangController::class, 'getBarangById']);

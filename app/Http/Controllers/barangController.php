@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 
+
 class BarangController extends Controller
 {
     public $model;
@@ -35,6 +36,12 @@ class BarangController extends Controller
     {
         $barang = $this->model->getBarangById($id_barang);
         return view('barang.detailbarang', ['barang' => $barang]);
+    }
+
+    public function getBarangById($id_barang)
+    {
+        $barang = $this->model->getBarangById($id_barang);
+        return response()->json($barang);
     }
 
     public function searchBarang(Request $request)
@@ -89,8 +96,6 @@ class BarangController extends Controller
     // Redirect ke halaman atau berikan respon sesuai kebutuhan aplikasi Anda
     return redirect('/barang/all')->with('success', 'Barang berhasil ditambahkan');
 }
-
-
     public function deleteBarang($id)
     {
         $this->model->deleteBarang($id);

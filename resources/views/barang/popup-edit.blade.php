@@ -3,17 +3,17 @@
     <link rel="stylesheet" href="resources/css/app.css">
 </head>
 <body>
-    <div id="popup" class="hidden">
-        <div id="popup-overlay" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50">
-            <div id="popup-content" class="bg-white p-8 w-1/2 rounded-2xl">
-                <h2 id="popup-form-title" class="font-extrabold mb-5">
-                    Add New Barang
+    <div id="popup-edit" class="hidden">
+        <div id="popup-edit-overlay" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50">
+            <div id="popup-edit-content" class="bg-white p-8 w-1/2 rounded-2xl">
+                <h2 id="popup-edit-form-title" class="font-extrabold mb-5">
+                    Edit Barang
                 </h2>
-                <form id="popup-form"  action="/barang/add" method="POST" class="grid grid-cols-2 gap-5">
+                <form id="popup-edit-form"  action="" method="POST" class="grid grid-cols-2 gap-5">
                     @csrf
                     <div class="col-span-1">
                         <label for="id_barang">ID Barang:</label>
-                        <input type="text" id="id_barang" name="id_barang" class="w-full border border-gray-300 h-10 rounded p-1" required>
+                        <input type="text" id="id_barang_edit" name="id_barang" class="w-full border border-gray-300 h-10 rounded p-1" required>
                     </div>
                     <div class="col-span-1">
                         <label for="tanggal_masuk_gudang">Tanggal Masuk Gudang:</label>
@@ -56,7 +56,7 @@
                         <input type="text" id="kelengkapan" name="kelengkapan" class="w-full border border-gray-300 h-10 rounded p-1" required>
                     </div>
                     <div class="col-span-2 flex justify-center">
-                        <button id="popup-form-button" type="submit" class="w-1/3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-2xl">Add</button>
+                        <button id="popup-edit-form-button" type="submit" class="w-1/3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-2xl">Edit</button>
                     </div>
                 </form>
             </div>

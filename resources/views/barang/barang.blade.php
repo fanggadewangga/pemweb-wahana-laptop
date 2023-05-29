@@ -9,7 +9,8 @@
 
 <body>
 
-    @include('barang.formPopup')
+    @include('barang.popup-add')
+    @include('barang.popup-edit')
     <!-- Top bar start-->
     <div class="w-full shadow-md flex justify-between px-8">
         <!-- Store name start -->
@@ -72,7 +73,7 @@
 
 
                     <!-- Button add start -->
-                    <button id = "openPopup" class="ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
+                    <button id = "open-popup-add" onclick="showPopupAddForm()" class="ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
                         Add
                     </button>
                     <!-- Button add end -->
@@ -130,9 +131,9 @@
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
-                                    <a id = "" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
+                                    <button data-id="{{ $brg->id_barang }}" id="open-popup-edit-{{ $brg->id_barang }}" class="px-8 py-1 text-white bg-purple-900 rounded-full">
                                         Edit
-                                    </a>
+                                    </button>
                                     <form action="{{ url('/barang/delete', $brg->id_barang) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
                                         @csrf
                                         @method('DELETE')
@@ -146,6 +147,36 @@
                                 </div>
                             </td>
                         </tr>
+                        <script>
+                            const openPopupEditButton{{ $brg->id_barang }} = document.getElementById("open-popup-edit-{{ $brg->id_barang }}");
+                            openPopupEditButton{{ $brg->id_barang }}.addEventListener("click", function () {
+                                const id = this.dataset.id;
+                                fetch("/get-data/" + id)
+                                    .then((response) => response.json())
+                                    .then((data) => {
+
+                                        const id_barang = document.getElementById("id_barang_edit")
+                                        id_barang.value = data.id_barang;
+                                        id_barang.readOnly  = true;
+
+
+                                        document.getElementById("tanggal_masuk_gudang").value = data.tanggal_masuk_gudang;
+                                        document.getElementById("jenis_barang").value = data.jenis_barang;
+                                        document.getElementById("garansi").value = data.garansi;
+                                        document.getElementById("merk_barang").value = data.merk_barang;
+                                        document.getElementById("stok").value = data.stok;
+                                        document.getElementById("tipe_barang").value = data.tipe_barang;
+                                        document.getElementById("harga_satuan").value = data.harga_satuan;
+                                        document.getElementById("foto_barang").value = data.foto_barang;
+                                        document.getElementById("spesifikasi").value = data.spesifikasi;
+                                        document.getElementById("kelengkapan").value = data.kelengkapan;
+                                        showPopupEditForm();
+                                    })
+                                    .catch((error) => {
+                                        console.error("Terjadi kesalahan:", error);
+                                    });
+                            });
+                        </script>
                         @endforeach
                         <!-- Data rows end -->
                     </tbody>
