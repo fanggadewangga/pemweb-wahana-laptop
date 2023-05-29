@@ -56,19 +56,16 @@
                         <h2 class="font-bold text-l text-purple-900 ml-6">Barang</h2>
                     </div>
 
-                    <!-- Search field start -->
-                    <div class="flex items-center justify-center">
-                        <div class="relative">
-                            <form action="/barang/search" method="GET"> <!-- Formulir pencarian dengan metode GET -->
-                                <input type="text" name="keyword" placeholder="Search..." class="w-96 py-1.5 pl-10 pr-8 rounded-full bg-gray-200 focus:outline-none" />
-                                <button type="submit" class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" width="25" height="25" viewBox="0 0 25 24" fill="none">
-                                    <ellipse cx="12.8976" cy="10.885" rx="9.10146" ry="8.88476" stroke="#ADB5BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M19.2278 17.5258L22.7961 21.0001" stroke="#ADB5BD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </button>
-                            </form>
+                    <div class="flex flex-row items-center">
+                        <!-- Search field start -->
+                        <div class="flex items-center justify-center">
+                            <div class="items-center">
+                                <form action="/barang/search" method="GET"> <!-- Formulir pencarian dengan metode GET -->
+                                    <input type="text" name="keyword" placeholder="Search..." class="w-96 py-1.5 pl-10 pr-8 rounded-full bg-gray-200 focus:outline-none" />
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Search field end -->
+                        <!-- Search field end -->
 
 
                     <!-- Button add start -->
@@ -140,9 +137,7 @@
                                             Delete
                                         </button>
                                     </form>
-                                    <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-6 py-1 ml-4 text-white bg-green-500 rounded-full">
-                                        Show
-                                    </a>
+
                                 </div>
                             </td>
                         </tr>
@@ -189,4 +184,5 @@
     <!-- Tabel container -->
 </body>
 <script src="{{asset('js/popupForm.js')}}"></script>
+
 </html>

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\KaryawanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +34,21 @@ Route::delete('/barang/delete/{id_barang}', [BarangController::class, 'deleteBar
 
 Route::post('/barang/add', [BarangController::class, 'addBarang']);
 
+Route::get('/login', function () {
+    return view('auth/login');
+});
+
+Route::post('/login/auth', [KaryawanController::class, 'login']);
+
+Route::get('/register', function () {
+    return view('auth/register');
+});
+
+Route::get('/karyawan/all', [KaryawanController::class, 'getAllKaryawan']);
+Route::get('/karyawan/search', [KaryawanController::class, 'searchKaryawan']);
+
+Route::get('/customer/all', [CustomerController::class, 'getAllCustomer']);
+Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
 Route::post('/barang/update/{id_barang}', [BarangController::class, 'updateBarang']);
 
 // Rute untuk AJAX

@@ -62,7 +62,7 @@
                 <div class="relative w-6/12 h-96">
                     <form action="{{ url('/catalog/search') }}" method="GET">
                         <div class="w-full flex flex-row rounded-full bg-gray-200">
-                            <input type="text" name="keyword" placeholder="MacBook Pro 8.1 Early 2011 Core i5 SSD 256Gb" class="w-full py-8 pl-12 pr-8 text-lg font-semibold rounded-full bg-gray-200 focus:outline-none" />
+                            <input type="text" name="keyword" placeholder="Temukan laptop atau sparepart yang kamu cari" class="w-full py-8 pl-12 pr-8 text-lg font-semibold rounded-full bg-gray-200 focus:outline-none" />
                             <button type="submit" class="w-96 px-16 my-2 mr-2 text-white bg-purple-900 rounded-full font-semibold">
                                 Search
                             </button>
@@ -242,7 +242,7 @@
         <div class="flex flex-row items-center justify-center px-32 mt-16">
             @php
             $count = 0;
-            $startIndex = 8;
+            $startIndex = 3;
             @endphp
 
             @for($i = $startIndex; $i < count($barang) && $count < 3; $i++) @php $brg=$barang[$i]; @endphp @if($brg->jenis_barang !== "Laptop")
