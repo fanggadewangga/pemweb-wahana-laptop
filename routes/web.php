@@ -20,36 +20,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Barang
 Route::get('/catalog', [BarangController::class, 'catalog']);
-
 Route::get('/catalog/search', [BarangController::class, 'searchBarang']);
-
 Route::get('/barang/all', [BarangController::class, 'index']);
-
 Route::get('/barang/detail/{id_barang}', [BarangController::class, 'getDetail']);
-
 Route::get('/barang/search', [BarangController::class, 'searchBarang']);
-
 Route::delete('/barang/delete/{id_barang}', [BarangController::class, 'deleteBarang']);
-
 Route::post('/barang/add', [BarangController::class, 'addBarang']);
-
-Route::get('/login', function () {
-    return view('auth/login');
-});
-
-Route::post('/login/auth', [KaryawanController::class, 'login']);
-
-Route::get('/register', function () {
-    return view('auth/register');
-});
-
-Route::get('/karyawan/all', [KaryawanController::class, 'getAllKaryawan']);
-Route::get('/karyawan/search', [KaryawanController::class, 'searchKaryawan']);
-
-Route::get('/customer/all', [CustomerController::class, 'getAllCustomer']);
-Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
 Route::post('/barang/update/{id_barang}', [BarangController::class, 'updateBarang']);
 
+
+//Auth
+Route::get('/login', function () {return view('auth/login');});
+Route::post('/login/auth', [KaryawanController::class, 'login']);
+Route::get('/register', function () {return view('auth/register');});
+
+
+//Karyawan
+Route::get('/karyawan/all', [KaryawanController::class, 'getAllKaryawan']);
+Route::post('/karyawan/add', [KaryawanController::class, 'addKaryawan']);
+Route::get('/karyawan/search', [KaryawanController::class, 'searchKaryawan']);
+Route::post('/karyawan/update/{id_karyawan}', [KaryawanController::class, 'updateKaryawan']);
+Route::delete('/karyawan/delete/{id_karyawan}', [KaryawanController::class, 'deleteKaryawan']);
+
+
+//Customer
+Route::get('/customer/all', [CustomerController::class, 'getAllCustomer']);
+Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
+
 // Rute untuk AJAX
-Route::get('/get-data/{id_barang}', [BarangController::class, 'getBarangById']);
+Route::get('/get-data-barang/{id_barang}', [BarangController::class, 'getBarangById']);
+Route::get('/get-data-karyawan/{id_karyawan}', [KaryawanController::class, 'getKaryawanById']);

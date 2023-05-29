@@ -40,7 +40,7 @@ class KaryawanController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            print("BVerhasil");
+            print("Berhasil");
             // Authentikasi berhasil, redirect ke halaman /catalog
 
         } else {
@@ -55,4 +55,55 @@ class KaryawanController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    public function addKaryawan(Request $request)
+    {
+
+        // Buat instance Barang baru dan atur nilainya berdasarkan data yang diterima dari permintaan
+        $id_karyawan = $request->input('id_karyawan');
+        $nama_karyawan = $request->input('nama_karyawan');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $this->model->addKaryawan( $id_karyawan, $nama_karyawan,  $email, $password);
+
+        // Redirect ke halaman atau berikan respon sesuai kebutuhan aplikasi Anda
+        return redirect('/karyawan/all')->with('success', 'Karyawan berhasil ditambahkan');
+    }
+    public function updateKaryawan(Request $request)
+    {
+        $id_karyawan = $request->input('id_karyawan');
+        $nama_karyawan = $request->input('nama_karyawan');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $data = [
+            'id_karyawan' => $id_karyawan,
+            'nama_karyawan' => $nama_karyawan,
+            'email' => $email,
+            'password' => $password,
+        ];
+
+        // Sesuaikan dengan nama model yang Anda gunakan
+        $result = $this->model->updateKaryawan($id_karyawan, $data);
+
+        if ($result) {
+            return redirect('/karyawan/all')->with('success', 'Karyawan berhasil diperbarui.');
+        } else {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui karyawan.');
+        }
+    }
+
+    public function getKaryawanById($id_karyawan)
+    {
+        $karyawan = $this->model->getKaryawanById($id_karyawan);
+        return response()->json($karyawan);
+    }
+
+    public function deleteKaryawan($id_karyawan)
+    {
+        $this->model->deleteKaryawan($id_karyawan);
+        return redirect('/karyawan/all')->with('success', 'Karyawan berhasil dihapus');
+    }
+
 }

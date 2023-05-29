@@ -61,7 +61,7 @@ class Barang extends Model
         $result = DB::table($this->table)->where('jenis_barang', 'LIKE', "%$keyword%")->orWhere('merk_barang', 'LIKE', "%$keyword%")->orWhere('tipe_barang', 'LIKE', "%$keyword%")->get();
         return $result;
     }
-
+    // Method untuk mengedit atau update data barang
     public function updateBarang($id_barang, $data)
     {
         $result = DB::table($this->table)->where('id_barang', $id_barang)->update($data);

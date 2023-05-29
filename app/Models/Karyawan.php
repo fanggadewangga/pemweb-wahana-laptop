@@ -62,4 +62,22 @@ class Karyawan extends Authenticatable
         $result = DB::table($this->table)->where('nama_karyawan', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%")->get();
         return $result;
     }
+
+    public function updateKaryawan($id_karyawan, $data)
+    {
+        $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->update($data);
+        return $result;
+    }
+
+    public function getKaryawanById($id_karyawan)
+    {
+        $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->first();
+        return $result;
+    }
+
+    public function deleteKaryawan($id_karyawan)
+    {
+        $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->delete();
+        return $result;
+    }
 }
