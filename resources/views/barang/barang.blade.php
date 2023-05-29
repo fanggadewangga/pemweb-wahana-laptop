@@ -129,6 +129,9 @@
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
+                                    <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-6 py-1 mr-4 text-white bg-green-500 rounded-full">
+                                        Show
+                                    </a>
                                     <a id="" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
                                         Edit
                                     </a>
@@ -139,9 +142,7 @@
                                             Delete
                                         </button>
                                     </form>
-                                    <a href="{{ url('/barang/detail', $brg->id_barang) }}" class="px-6 py-1 ml-4 text-white bg-green-500 rounded-full">
-                                        Show
-                                    </a>
+
                                 </div>
                             </td>
                         </tr>

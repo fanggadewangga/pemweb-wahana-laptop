@@ -31,3 +31,11 @@ Route::get('/barang/search', [BarangController::class, 'searchBarang']);
 Route::delete('/barang/delete/{id_barang}', [BarangController::class, 'deleteBarang']);
 
 Route::post('/barang/add', [BarangController::class, 'addBarang']);
+
+Route::get('/login', function () {
+    return view('auth/login');
+});
+
+Route::get('/register', function () {
+    return view('auth/register');
+});
