@@ -15,6 +15,7 @@ class PembelianController extends Controller
 
     public function getAllPembelian()
     {
-        return $this->model->getPembelian();
+        $result = $this->model->getAllPembelian();
+        return view('pembelian.pembelian', ['pembelian' => $result]);
     }
 }

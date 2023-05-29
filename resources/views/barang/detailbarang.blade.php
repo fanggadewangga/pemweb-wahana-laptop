@@ -18,16 +18,13 @@
         <!-- Store name end -->
 
         <!-- Navbar start -->
-        <div class="w-1/5 flex items-center">
+        <div class="w-2/12 flex items-center">
             <ul class="w-full flex flex-row justify-between">
                 <li>
-                    <a href="#" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Dashboard</a>
                 </li>
                 <li>
                     <a href="{{ url('/catalog') }}" class="font-semibold text-gray-400 text-base hover:text-purple-900 hover:font-bold">Catalog</a>
-                </li>
-                <li>
-                    <a href="{{ url('/barang/all') }}" class="font-bold text-purple-900 text-base hover:text-purple-900 hover:font-bold">Barang</a>
                 </li>
             </ul>
         </div>

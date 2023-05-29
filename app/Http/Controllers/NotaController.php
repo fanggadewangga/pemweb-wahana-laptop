@@ -15,6 +15,7 @@ class NotaController extends Controller
 
     public function getAllNota()
     {
-        return $this->model->getNota();
+        $result = $this->model->getAllNota();
+        return view('nota.nota', ['nota' => $result]);
     }
 }

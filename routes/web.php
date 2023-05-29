@@ -3,6 +3,9 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\NotaController;
+use App\Http\Controllers\PembelianController;
+use App\Models\Nota;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.dashboard');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
 });
 
 Route::get('/catalog', [BarangController::class, 'catalog']);
@@ -49,3 +56,9 @@ Route::get('/karyawan/search', [KaryawanController::class, 'searchKaryawan']);
 
 Route::get('/customer/all', [CustomerController::class, 'getAllCustomer']);
 Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
+
+Route::get('/nota/all', [NotaController::class, 'getAllNota']);
+Route::get('/nota/search', [NotaController::class, 'getAllNota']);
+
+Route::get('/pembelian/all', [PembelianController::class, 'getAllPembelian']);
+Route::get('/pembelian/search', [PembelianController::class, 'getAllPembelian']);
