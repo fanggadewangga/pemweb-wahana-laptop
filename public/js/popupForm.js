@@ -1,30 +1,38 @@
 const openPopupAddButton = document.getElementById("open-popup-add");
-const popupAdd = document.getElementById("popup-add");
-const popupAddOverlay = document.getElementById("popup-add-overlay");
-const openPopupEditButton = document.getElementById("open-popup-edit");
-const popupEdit = document.getElementById("popup-edit");
-const popupEditOverlay = document.getElementById("popup-edit-overlay");
+const popup = document.getElementById("popup");
+const popupOverlay = document.getElementById("popup-overlay");
 
-function showPopupAddForm(){
-    popupAdd.style.display = "block";
-    popupAddOverlay.style.display = "flex";
+
+function showPopupForm(){
+    popup.style.display = "block";
+    popupOverlay.style.display = "flex";
 }
 
-function showPopupEditForm() {
-    popupEdit.style.display = "block";
-    popupEditOverlay.style.display = "flex";
-}
 
-popupAddOverlay.addEventListener("click", function (event) {
-    if (event.target === popupAddOverlay) {
-        popupAdd.style.display = "none";
-        popupAddOverlay.style.display = "none";
+popupOverlay.addEventListener("click", function (event) {
+    if (event.target === popupOverlay) {
+        popup.style.display = "none";
+        popupOverlay.style.display = "none";
+        recoverField();
     }
 });
 
-popupEditOverlay.addEventListener("click", function (event) {
-    if (event.target === popupEditOverlay) {
-        popupEdit.style.display = "none";
-        popupEditOverlay.style.display = "none";
-    }
-});
+function recoverField(){
+    // Assuming your form has an ID attribute, e.g., "myForm"
+    const form = document.getElementById("popup-form");
+
+    form.action = "/barang/add"
+
+    // Reset all input fields in the form
+    const inputFields = form.querySelectorAll("input");
+    inputFields.forEach((input) => {
+        input.value = "";
+        input.readOnly = false;
+    });
+
+    document.getElementById("popup-form-title").textContent = "Add New Barang";
+    document.getElementById("popup-form-button").textContent = "Add";
+}
+
+
+

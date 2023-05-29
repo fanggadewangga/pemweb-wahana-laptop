@@ -9,8 +9,7 @@
 
 <body>
 
-    @include('barang.popup-add')
-    @include('barang.popup-edit')
+    @include('barang.popup')
     <!-- Top bar start-->
     <div class="w-full shadow-md flex justify-between px-8">
         <!-- Store name start -->
@@ -73,7 +72,7 @@
 
 
                     <!-- Button add start -->
-                    <button id = "open-popup-add" onclick="showPopupAddForm()" class="ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
+                    <button id = "open-popup-add" onclick="showPopupForm()" class="ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
                         Add
                     </button>
                     <!-- Button add end -->
@@ -137,7 +136,7 @@
                                     <form action="{{ url('/barang/delete', $brg->id_barang) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
+                                        <button type="submit" onclick="recoverField()" class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
                                             Delete
                                         </button>
                                     </form>
@@ -154,11 +153,13 @@
                                 fetch("/get-data/" + id)
                                     .then((response) => response.json())
                                     .then((data) => {
-
-                                        const id_barang = document.getElementById("id_barang_edit")
+                                        const id_barang = document.getElementById("id_barang")
                                         id_barang.value = data.id_barang;
-                                        id_barang.readOnly  = true;
+                                        id_barang.readOnly  = true; 
 
+                                        document.getElementById("popup-form").action = "/barang/update/{id_barang}"
+                                        document.getElementById("popup-form-title").textContent = "Edit Barang"
+                                        document.getElementById("popup-form-button").textContent = "Update"
 
                                         document.getElementById("tanggal_masuk_gudang").value = data.tanggal_masuk_gudang;
                                         document.getElementById("jenis_barang").value = data.jenis_barang;
@@ -170,7 +171,7 @@
                                         document.getElementById("foto_barang").value = data.foto_barang;
                                         document.getElementById("spesifikasi").value = data.spesifikasi;
                                         document.getElementById("kelengkapan").value = data.kelengkapan;
-                                        showPopupEditForm();
+                                        showPopupForm();
                                     })
                                     .catch((error) => {
                                         console.error("Terjadi kesalahan:", error);

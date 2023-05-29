@@ -96,9 +96,15 @@ class BarangController extends Controller
     // Redirect ke halaman atau berikan respon sesuai kebutuhan aplikasi Anda
     return redirect('/barang/all')->with('success', 'Barang berhasil ditambahkan');
 }
-    public function deleteBarang($id)
+    public function deleteBarang($id_barang)
     {
-        $this->model->deleteBarang($id);
+        $this->model->deleteBarang($id_barang);
         return redirect('/barang/all')->with('success', 'Barang berhasil dihapus');
+    }
+
+
+    public function updateBarang($id_barang)
+    {
+        
     }
 }

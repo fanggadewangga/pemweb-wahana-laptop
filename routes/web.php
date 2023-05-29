@@ -32,4 +32,7 @@ Route::delete('/barang/delete/{id_barang}', [BarangController::class, 'deleteBar
 
 Route::post('/barang/add', [BarangController::class, 'addBarang']);
 
-Route::get('/get-data/{id}', [BarangController::class, 'getBarangById']);
+Route::post('/barang/update/{id_barang}', [BarangController::class, 'updateBarang']);
+
+// Rute untuk AJAX
+Route::get('/get-data/{id_barang}', [BarangController::class, 'getBarangById']);
