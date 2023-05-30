@@ -9,7 +9,7 @@
 
 <body>
 
-    @include('barang.formPopup')
+    @include('karyawan.popupkaryawan')
     <!-- Top bar start-->
     <div class="w-full shadow-md flex justify-between px-8">
         <!-- Store name start -->
@@ -66,7 +66,7 @@
 
 
                         <!-- Button add start -->
-                        <button id="openPopup" class="h-8 ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
+                        <button id="openPopup" onclick = "showPopupForm()" class="h-8 ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
                             Add
                         </button>
                         <!-- Button add end -->
@@ -95,33 +95,58 @@
                     </thead>
                     <tbody class="bg-white divide-y-2 divide-gray-200">
                         <!-- Data rows start -->
-                        @foreach($karyawan as $karyawan)
+                        @foreach($karyawan as $krywn)
                         <tr>
                             <td class="px-8 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                {{ $karyawan->id_karyawan }}
+                                {{ $krywn->id_karyawan }}
                             </td>
                             <td class="px-12 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                {{ $karyawan->nama_karyawan }}
+                                {{ $krywn->nama_karyawan }}
                             </td>
                             <td class="px-12 py-4 whitespace-nowrap text-base font-semibold text-gray-700 align-middle">
-                                {{ $karyawan->email }}
+                                {{ $krywn->email }}
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
-                                    <a id="" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
+                                    <button data-id="{{ $krywn->id_karyawan }}" id="open-popup-edit-{{ $krywn->id_karyawan }}" class="px-8 py-1 text-white bg-purple-900 rounded-full">
                                         Edit
-                                    </a>
-                                    <form action="" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
+                                    </button>
+                                    <form action="{{ url('/karyawan/delete', $krywn->id_karyawan) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
                                             Delete
                                         </button>
                                     </form>
-
                                 </div>
                             </td>
                         </tr>
+                        <script>
+                            const openPopupEditButton{{ $krywn->id_karyawan }} = document.getElementById("open-popup-edit-{{ $krywn->id_karyawan }}");
+                            openPopupEditButton{{ $krywn->id_karyawan }}.addEventListener("click", function () {
+                                const id = this.dataset.id;
+                                fetch("/get-data-karyawan/" + id)
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        const id_karyawan = document.getElementById("id_karyawan")
+                                        id_karyawan.value = data.id_karyawan;
+                                        id_karyawan.readOnly  = true; 
+
+                                        document.getElementById("popup-form").action = "/karyawan/update/{id_karyawan}"
+                                        document.getElementById("popup-form-title").textContent = "Edit Karyawan"
+                                        document.getElementById("popup-form-button").textContent = "Update"
+
+                                        document.getElementById("id_karyawan").value = data.id_karyawan;
+                                        document.getElementById("nama_karyawan").value = data.nama_karyawan;
+                                        document.getElementById("email").value = data.email;
+                                        document.getElementById("password").value = data.password;
+                                        showPopupForm();
+                                    })
+                                    .catch((error) => {
+                                        console.error("Terjadi kesalahan:", error);
+                                    });
+                            });
+                        </script>
                         @endforeach
                         <!-- Data rows end -->
                     </tbody>

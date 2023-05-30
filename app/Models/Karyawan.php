@@ -64,25 +64,21 @@ class Karyawan extends Authenticatable
         return $result;
     }
 
-    // Method untuk menghapus data karyawan berdasarkan ID
+    public function updateKaryawan($id_karyawan, $data)
+    {
+        $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->update($data);
+        return $result;
+    }
+
+    public function getKaryawanById($id_karyawan)
+    {
+        $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->first();
+        return $result;
+    }
+
     public function deleteKaryawan($id_karyawan)
     {
         $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->delete();
         return $result;
     }
-
-    // Method untuk mengedit data karyawan berdasarkan ID
-    public function editKaryawan($id_karyawan, $nama_karyawan, $email, $password)
-    {
-        $data = [
-            'nama_karyawan' => $nama_karyawan,
-            'email' => $email,
-            'password' => $password,
-        ];
-
-        $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->update($data);
-        return $result;
-    }
-
-
 }
