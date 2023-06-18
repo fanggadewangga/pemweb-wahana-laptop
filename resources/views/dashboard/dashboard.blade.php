@@ -9,7 +9,7 @@
 
 <body class="bg-gray-200">
     <!-- Top bar start-->
-    <div class="w-full shadow-md flex justify-between px-8">
+    <div class="w-full shadow-md flex justify-between px-8 bg-black">
         <!-- Store name start -->
         <h1 class="font-medium flex items-center text-2xl text-purple-900 mr-6 drop-shadow-2xl">
             Wahana
@@ -55,13 +55,13 @@
 
     <!-- First row start -->
     <div class="w-8/12 flex flex-row mx-auto items-center justify-between mt-16">
-        <a href="{{ url('/barang/all') }}" class="px-24 py-12 bg-white rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
+        <a href="{{ url('/barang/all') }}" class="px-24 py-12 bg-blue-400 rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
             Barang
         </a>
-        <a href="{{ url('/pembelian/all') }}" class="px-24 py-12 bg-white rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
+        <a href="{{ url('/pembelian/all') }}" class="px-24 py-12 bg-blue-400 rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
             Pembelian
         </a>
-        <a href="{{ url('/nota/all') }}" class="px-24 py-12 bg-white rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
+        <a href="{{ url('/nota/all') }}" class="px-24 py-12 bg-blue-400 rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
             Nota
         </a>
     </div>
@@ -69,10 +69,10 @@
 
     <!-- Second row start -->
     <div class="w-6/12 flex flex-row mx-auto items-center justify-between mt-16">
-        <a href="{{ url('/karyawan/all') }}" class="px-24 py-12 bg-white rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
+        <a href="{{ url('/karyawan/all') }}" class="px-24 py-12 bg-blue-400 rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
             Karyawan
         </a>
-        <a href="{{ url('/customer/all') }}" class="px-24 py-12 bg-white rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
+        <a href="{{ url('/customer/all') }}" class="px-24 py-12 bg-blue-400 rounded-2xl shadow drop-shadow-xl shadow-gray-300 text-purple-800 text-5xl font-bold">
             Customer
         </a>
     </div>
