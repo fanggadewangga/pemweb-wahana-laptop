@@ -139,7 +139,7 @@
                                     <form action="{{ url('/barang/delete', $brg->id_barang) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="recoverField()" class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
+                                        <button type="submit" class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
                                             Delete
                                         </button>
                                     </form>

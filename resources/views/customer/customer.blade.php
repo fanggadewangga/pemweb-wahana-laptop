@@ -9,7 +9,7 @@
 
 <body>
 
-    {{-- @include('barang.formPopup') --}}
+    @include('customer.popupcustomer')
     <!-- Top bar start-->
     <div class="w-full shadow-md flex justify-between px-8">
         <!-- Store name start -->
@@ -71,7 +71,7 @@
 
 
                         <!-- Button add start -->
-                        <button id="openPopup" class="h-8 ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
+                        <button  id="openPopup" onclick="showPopupForm()"  class="h-8 ps-11 pe-11 items-center mt-2 mb-2 ml-4 mr-4 rounded-full bg-purple-800 text-white font-semibold">
                             Add
                         </button>
                         <!-- Button add end -->
@@ -113,10 +113,10 @@
                             </td>
                             <td class="pl-32 py-4 align-middle">
                                 <div class="flex flex-row">
-                                    <a id="" href="" class="px-8 py-1 text-white bg-purple-900 rounded-full">
+                                    <button data-id="{{ $customer->id_customer }}" id="open-popup-edit-{{ $customer->id_customer }}" class="px-8 py-1 text-white bg-purple-900 rounded-full">
                                         Edit
-                                    </a>
-                                    <form action="" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
+                                    </button>
+                                    <form action="{{ url('/customer/delete', $customer->id_customer) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="px-6 py-1 ml-4 text-white bg-red-600 rounded-full">
@@ -126,6 +126,31 @@
                                 </div>
                             </td>
                         </tr>
+                        <script>
+                            const openPopupEditButton{{$customer->id_customer }} = document.getElementById("open-popup-edit-{{ $customer->id_customer}}");
+                            openPopupEditButton{{ $customer->id_customer }}.addEventListener("click", function () {
+                                const id = this.dataset.id;
+                                fetch("/get-data-customer/" + id)
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        const id_customer = document.getElementById("id_customer")
+                                        id_customer.value = data.id_customer;
+                                        id_customer.readOnly = true; 
+
+                                        document.getElementById("popup-form").action = "/customer/update/{id_customer}"
+                                        document.getElementById("popup-form-title").textContent = "Edit Customer"
+                                        document.getElementById("popup-form-button").textContent = "Update"
+
+                                        document.getElementById("id_customer").value = data.id_customer;
+                                        document.getElementById("nama_customer").value = data.nama_customer;
+                                        document.getElementById("nomor_telepon").value = data.nomor_telepon;
+                                        showPopupForm();
+                                    })
+                                    .catch((error) => {
+                                        console.error("Terjadi kesalahan:", error);
+                                    });
+                            });
+                        </script>
                         @endforeach
                         <!-- Data rows end -->
                     </tbody>
