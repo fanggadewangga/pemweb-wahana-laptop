@@ -9,7 +9,7 @@
 
 <body>
 
-    @include('barang.formPopup')
+    {{-- @include('barang.formPopup') --}}
     <!-- Top bar start-->
     <div class="w-full shadow-md flex justify-between px-8">
         <!-- Store name start -->

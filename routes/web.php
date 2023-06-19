@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\PembelianController;
+use App\Models\Customer;
 use App\Models\Nota;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +33,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Customer routes
     Route::get('/customer/all', [CustomerController::class, 'getAllCustomer']);
+    Route::post('/customer/add', [CustomerController::class, 'addCustomer']);
     Route::get('/customer/search', [CustomerController::class, 'searchCustomer']);
+    Route::post('customer/update/{id_customer}', [CustomerController::class, 'updateCustomer']);
+    Route::delete('customer/delete/{id_customer}', [CustomerController::class, 'deleteCustomer']);
 
     // Nota routes
     Route::get('/nota/all', [NotaController::class, 'getAllNota']);
@@ -42,9 +46,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembelian/all', [PembelianController::class, 'getAllPembelian']);
     Route::get('/pembelian/search', [PembelianController::class, 'getAllPembelian']);
 
+
+//Customer
+
+
     // AJAX routes
-    Route::get('/get-data-barang/{id_barang}', [BarangController::class, 'getBarangById']);
+    Route::get('/get-data-barang/{id_barang}', [BarangController::class, 'getBarangById']);    
     Route::get('/get-data-karyawan/{id_karyawan}', [KaryawanController::class, 'getKaryawanById']);
+
 
     // Log Out
     Route::post('/logout', [KaryawanController::class, 'logout'])->name('logout');
@@ -67,3 +76,5 @@ Route::get('/', function () {
         return redirect()->route('login');
     }
 });
+
+Route::get('/get-data-customer/{id_customer}', [CustomerController::class, 'getCustomerById']);
