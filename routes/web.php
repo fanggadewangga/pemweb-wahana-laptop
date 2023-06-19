@@ -58,8 +58,13 @@ Route::get('/', function () {
 });
 
 // Auth routes
-Route::get('/login', [KaryawanController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [KaryawanController::class, 'login']);
-Route::get('/register', [KaryawanController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [KaryawanController::class, 'register']);
+Route::middleware('guest')->group(function(){
+    Route::get('/login', [KaryawanController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [KaryawanController::class, 'login']);
+    Route::get('/register', [KaryawanController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [KaryawanController::class, 'register']);
+});
+
 Route::post('/logout', [KaryawanController::class, 'logout'])->name('logout');
+
+require __DIR__.'/auth.php';
