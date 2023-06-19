@@ -10,6 +10,8 @@ class Karyawan extends Authenticatable
 {
     protected $table = 'karyawan';
 
+    protected $guard = 'web';
+    
     protected $fillable = ['id_karyawan', 'nama_karyawan', 'email', 'password'];
 
     // Method untuk mengambil data karyawan
@@ -19,6 +21,15 @@ class Karyawan extends Authenticatable
         return $result;
     }
 
+    public function getAuthIdentifier()
+    {
+        return $this->id_karyawan;
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'id_karyawan';
+    }
     // Method untuk menambahkan data karyanwan (Sign Up)
     public function addKaryawan($id_karyawan, $nama_karyawan, $email, $password)
     {

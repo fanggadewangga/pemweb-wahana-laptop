@@ -37,7 +37,7 @@
 
 
             <!-- Form login start -->
-            <form action="{{ url('/login') }}" method="POST" class="w-full mx-auto mt-6">
+            <form action="{{ url('/login') }}" method="post" class="w-full mx-auto mt-6">
                 @csrf
                 <!-- Email fields start -->
                 <div class="w-full px-20 flex flex-col justify-center">

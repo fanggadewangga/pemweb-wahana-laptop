@@ -33,6 +33,7 @@ class KaryawanController extends Controller
     public function __construct(Karyawan $model)
     {
         $this->model = $model;
+        
     }
 
     public function getAllKaryawan()
@@ -58,6 +59,7 @@ class KaryawanController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        
         if (Auth::attempt($credentials)) {
             return redirect()->route('dashboard');
             // Authentikasi berhasil, redirect ke halaman /dashboard

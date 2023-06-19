@@ -8,8 +8,9 @@ use App\Http\Controllers\PembelianController;
 use App\Models\Nota;
 use Illuminate\Support\Facades\Route;
 
+// Authorized routes
 Route::middleware(['auth'])->group(function () {
-    // Protected routes that require authentication
+
     Route::get('/dashboard', function () {return view('dashboard.dashboard');})->name('dashboard');
 
     // Barang routes
@@ -45,26 +46,27 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-data-barang/{id_barang}', [BarangController::class, 'getBarangById']);
     Route::get('/get-data-karyawan/{id_karyawan}', [KaryawanController::class, 'getKaryawanById']);
 
-    // Add more protected routes here
+    // Log Out
+    Route::post('/logout', [KaryawanController::class, 'logout'])->name('logout');
 });
 
-// Public routes accessible to all users
-Route::get('/', function () {
-    if (Auth::check()) {
-        return redirect()->route('dashboard');
-    } else {
-        return redirect()->route('login');
-    }
-});
 
-// Auth routes
+// Guest routes
 Route::middleware('guest')->group(function(){
-    Route::get('/login', [KaryawanController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [KaryawanController::class, 'login']);
+    Route::get('/login', [KaryawanController::class, 'showLoginForm'])->name('login');
     Route::get('/register', [KaryawanController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [KaryawanController::class, 'register']);
 });
 
-Route::post('/logout', [KaryawanController::class, 'logout'])->name('logout');
+// Public routes accessible to all users
+// Route::get('/', function () {
+//     if (Auth::check()) {
+//         return redirect()->route('dashboard');
+//     } else {
+//         return redirect()->route('login');
+//     }
+// });
+
 
 require __DIR__.'/auth.php';
