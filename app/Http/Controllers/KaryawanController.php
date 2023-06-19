@@ -99,11 +99,12 @@ class KaryawanController extends Controller
                 -> numbers()
                 -> mixedCase(),
             ],
+            'id_karyawan' => 'sometimes|string',
         ]);
 
         $data = [
-            'id_karyawan' => $validatedData['id_karyawan'],
-            'nama_karyawan' => $validatedData['nama_karyawan'],
+            'id_karyawan' => $request->filled('id_karyawan') ? $request->id_karyawan : 'K000',
+            'nama_karyawan' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => $validatedData['password']
         ];
