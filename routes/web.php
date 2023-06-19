@@ -60,13 +60,10 @@ Route::middleware('guest')->group(function(){
 });
 
 // Public routes accessible to all users
-// Route::get('/', function () {
-//     if (Auth::check()) {
-//         return redirect()->route('dashboard');
-//     } else {
-//         return redirect()->route('login');
-//     }
-// });
-
-
-require __DIR__.'/auth.php';
+Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    } else {
+        return redirect()->route('login');
+    }
+});

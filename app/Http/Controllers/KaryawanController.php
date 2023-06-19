@@ -74,6 +74,20 @@ class KaryawanController extends Controller
 
     public function register(Request $request)
     {
+        $data = $this->karyawanInput($request);
+        
+        $result = $this->model->addKaryawan($data);
+    
+        return redirect()->route('login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login')->with('success', 'Logged out successfully');
+    }
+    
+    public function karyawanInput(Request $request){
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
@@ -83,65 +97,38 @@ class KaryawanController extends Controller
                 Password::min(8)
                 -> letters()
                 -> numbers()
-                -> mixedCase()
-                -> uncompromised(),
+                -> mixedCase(),
             ],
         ]);
-    
-        // Create a new user
-        $user = Karyawan::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-        ]);
-    
-        // Redirect the user to a specific page
-        return redirect()->route('login');
-    }
 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login')->with('success', 'Logged out successfully');
+        $data = [
+            'id_karyawan' => $validatedData['id_karyawan'],
+            'nama_karyawan' => $validatedData['nama_karyawan'],
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password']
+        ];
+
+        return $data;
     }
 
     public function addKaryawan(Request $request)
     {
+        $data = $this->karyawanInput($request);
+        
+        $result = $this->model->addKaryawan($data);
 
-        // Buat instance Barang baru dan atur nilainya berdasarkan data yang diterima dari permintaan
-        $validatedData = $request->validate([
-            'id_karyawan' => 'required',
-            'nama_karyawan' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-    
-        $id_karyawan = $validatedData['id_karyawan'];
-        $nama_karyawan = $validatedData['nama_karyawan'];
-        $email = $validatedData['email'];
-        $password = Hash::make($validatedData['password']);
-
-        $this->model->addKaryawan( $id_karyawan, $nama_karyawan,  $email, $password);
-
-        // Redirect ke halaman atau berikan respon sesuai kebutuhan aplikasi Anda
-        return redirect('/karyawan/all')->with('success', 'Karyawan berhasil ditambahkan');
+        if ($result) {
+            return redirect('/karyawan/all')->with('success', 'Karyawan berhasil ditambahkan.');
+        } else {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menambahkan karyawan.');
+        }
     }
+
     public function updateKaryawan(Request $request)
     {
-        $id_karyawan = $request->input('id_karyawan');
-        $nama_karyawan = $request->input('nama_karyawan');
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $data = $this->karyawanInput($request);
 
-        $data = [
-            'id_karyawan' => $id_karyawan,
-            'nama_karyawan' => $nama_karyawan,
-            'email' => $email,
-            'password' => $password,
-        ];
-
-        // Sesuaikan dengan nama model yang Anda gunakan
-        $result = $this->model->updateKaryawan($id_karyawan, $data);
+        $result = $this->model->updateKaryawan($data);
 
         if ($result) {
             return redirect('/karyawan/all')->with('success', 'Karyawan berhasil diperbarui.');

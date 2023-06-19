@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
@@ -31,17 +32,32 @@ class Karyawan extends Authenticatable
         return 'id_karyawan';
     }
     // Method untuk menambahkan data karyanwan (Sign Up)
-    public function addKaryawan($id_karyawan, $nama_karyawan, $email, $password)
+    public function addKaryawan($data)
     {
         $data = [
-            'id_karyawan' => $id_karyawan,
-            'nama_karyawan' => $nama_karyawan,
-            'email' => $email,
-            'password' => Hash::make($password),
+            'id_karyawan' => $this->generateNextIndex(),
+            'nama_karyawan' => $data['nama_karyawan'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
         ];
 
         $result = DB::table($this->table)->insert($data);
         return $result;
+    }
+    
+
+    public function generateNextIndex()
+    {
+        $latestKaryawan = DB::table($this->table)->latest('id_karyawan')->first();
+
+        if ($latestKaryawan) {
+            $latestIndex = (int) Str::after($latestKaryawan->id_karyawan, 'K');
+            $nextIndex = $latestIndex + 1;
+        } else {
+            $nextIndex = 1;
+        }
+
+        return 'K' . str_pad($nextIndex, 3, '0', STR_PAD_LEFT);
     }
 
 
@@ -52,9 +68,9 @@ class Karyawan extends Authenticatable
         return $result;
     }
 
-    public function updateKaryawan($id_karyawan, $data)
+    public function updateKaryawan($data)
     {
-        $result = DB::table($this->table)->where('id_karyawan', $id_karyawan)->update($data);
+        $result = DB::table($this->table)->where('id_karyawan', $data['id_karyawan'])->update($data);
         return $result;
     }
 
