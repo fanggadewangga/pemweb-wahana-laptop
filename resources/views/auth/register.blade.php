@@ -37,40 +37,60 @@
 
 
             <div class="w-full mx-auto mt-6">
-                <!-- Name fields start -->
-                <div class="w-full px-20 flex flex-col justify-center">
-                    <h3 class="text-base font-medium text-gray-400 mb-2">
-                        Email
-                    </h3>
-                    <input type="text" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter text">
-                </div>
-                <!-- Name fields end -->
+                <!-- Form Signup start -->
+                <form action="{{ url('/register') }}" method="POST" class="w-full mx-auto mt-6">
+                    @csrf
 
-                <!-- Email fields start -->
-                <div class="w-full px-20 flex flex-col justify-center">
-                    <h3 class="text-base font-medium text-gray-400 mb-2">
-                        Email
-                    </h3>
-                    <input type="text" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter text">
-                </div>
-                <!-- Email fields end -->
+                    <!-- Name fields start -->
+                    <div class="w-full px-20 flex flex-col justify-center">
+                        <h3 class="text-base font-medium text-gray-400 mb-2">
+                            Name
+                        </h3>
+                        <input type="text" name="name" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter name">
+                        @error('name')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- Name fields end -->
 
-                <!-- Password fields start -->
-                <div class="w-full px-20 mt-4 flex flex-col justify-center">
-                    <h3 class="text-base font-medium text-gray-400 mb-2">
-                        Password
-                    </h3>
-                    <input type="text" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter text">
-                </div>
-                <!-- Password fields end -->
-
-                <!-- Button login start -->
-                <div class="w-full flex mt-4 justify-center">
-                    <a href="{{ url('/barang/detail') }}" class="px-16 py-1.5 bg-purple-900 te-c items-center text-xl text-white rounded-full font-semibold">
-                        Sign Up
-                    </a>
-                </div>
-                <!-- Button login end -->
+                    <!-- Email fields start -->
+                    <div class="w-full px-20 mt-4 flex flex-col justify-center">
+                        <h3 class="text-base font-medium text-gray-400 mb-2">
+                            Email
+                        </h3>
+                        <input type="text" name="email" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter email">
+                        @error('email')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <!-- Email fields end -->
+    
+                    <!-- Password fields start -->
+                    <div class="w-full px-20 mt-4 flex flex-col justify-center">
+                        <h3 class="text-base font-medium text-gray-400 mb-2">
+                            Password
+                        </h3>
+                        <input type="password" name="password" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter password">
+                        @error('password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+                        <ul class="list-disc list-inside text-sm text-gray-500 mt-1">
+                            <li>Password must be at least 8 characters long</li>
+                            <li>Must contain mix of uppercase and lowercase letters</li>
+                            <li>Must contain at least one number</li>
+                        </ul>
+                    </div>
+                    <!-- Password fields end -->
+    
+                    <!-- Button login start -->
+                    <div class="w-full flex mt-4 justify-center">
+                        <button type="submit" class="px-16 py-1.5 bg-purple-900 te-c items-center text-xl text-white rounded-full font-semibold">
+                            Sign Up
+                        </button>
+                    </div>
+                    <!-- Button login end -->
+                </form>
+                <!-- Form login end -->
 
                 <!-- Text start -->
                 <div class="w-full flex mt-4 justify-center">
@@ -81,6 +101,9 @@
                 </div>
                 <!-- Text end -->
             </div>
+
+                        
+
         </div>
         <!-- Login section end -->
 

@@ -44,7 +44,7 @@
                     <h3 class="text-base font-medium text-gray-400 mb-2">
                         Email
                     </h3>
-                    <input type="text" name="email" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter email">
+                    <input type="text" name="email" class="border border-purple-800 rounded-lg py-2 px-4 focus:outline-none focus:border-purple-700" placeholder="Enter email" value="{{ old('email') }}">
                     @error('email')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror

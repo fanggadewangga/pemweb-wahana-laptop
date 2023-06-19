@@ -38,11 +38,13 @@
                     </button>
                     <h4 class="text-gray-500 font-normal text-sm">Owner</h4>
                 </div>
-                <button type="button" class="flex items-center ml-4">
-                    <img src="{{url('/assets/logout.png')}}" alt="Logout" class="w-8 h-8">
-                </button>
+                <form action="{{url('logout')}}" method="POST">
+                    @csrf
+                    <button type="submit" class="flex items-center ml-4">
+                        <img src="{{url('/assets/logout.png')}}" alt="Logout" class="w-8 h-8">
+                    </button>
+                </form>
             </div>
-
         </div>
     </div>
     <!-- Top bar end -->
