@@ -141,7 +141,7 @@
                         </p>
                         <div class="w-11/12 bg-purple-800 rounded-full">
                             <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
-                                Laptop
+                                {{ $barang->jenis_barang}}
                             </h2>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                         </p>
                         <div class="w-11/12 bg-purple-800 rounded-full">
                             <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
-                                Laptop
+                                {{ $barang->id_barang}}
                             </h2>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                         </p>
                         <div class="w-11/12 bg-purple-800 rounded-full">
                             <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
-                                Laptop
+                                {{ $barang->merk_barang}}
                             </h2>
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                         </p>
                         <div class="w-11/12 bg-purple-800 rounded-full">
                             <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
-                                Laptop
+                                {{ $barang->garansi}}
                             </h2>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                         </p>
                         <div class="w-11/12 bg-purple-800 rounded-full">
                             <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
-                                Laptop
+                                {{ $barang->tipe_barang}}
                             </h2>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                         </p>
                         <div class="w-11/12 bg-purple-800 rounded-full">
                             <h2 class="w-full text-2xl py-2 font-medium text-white ml-6">
-                                Laptop
+                                {{ $barang->tanggal_masuk_gudang}}
                             </h2>
                         </div>
                     </div>

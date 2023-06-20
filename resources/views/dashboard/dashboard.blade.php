@@ -9,7 +9,7 @@
 
 <body class="bg-gray-200">
     <!-- Top bar start-->
-    <div class="w-full shadow-md flex justify-between px-8 bg-black">
+    <div class="w-full shadow-md flex justify-between px-8">
         <!-- Store name start -->
         <h1 class="font-medium flex items-center text-2xl text-purple-900 mr-6 drop-shadow-2xl">
             Wahana

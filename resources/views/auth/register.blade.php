@@ -40,7 +40,6 @@
                 <!-- Form Signup start -->
                 <form action="{{ url('/register') }}" method="POST" class="w-full mx-auto mt-6">
                     @csrf
-
                     <!-- Name fields start -->
                     <div class="w-full px-20 flex flex-col justify-center">
                         <h3 class="text-base font-medium text-gray-400 mb-2">

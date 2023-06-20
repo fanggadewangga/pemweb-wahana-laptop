@@ -9,6 +9,19 @@
                 <h2 id="popup-form-title" class="font-extrabold mb-5">
                     Add New Karyawan
                 </h2>
+
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 <form id="popup-form"  action="/karyawan/add" method="POST" class="grid grid-cols-1 gap-5">
                     @csrf
                     <div class="col-span-1">
@@ -26,6 +39,9 @@
                     <div class="col-span-1">
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" class="w-full border border-gray-300 h-10 rounded p-1" required>
+                        @error('password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-span-1 flex justify-center">
                         <button id="popup-form-button" type="submit" class="w-1/3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-2xl">Add</button>
